@@ -9,7 +9,7 @@ setuptools.setup(
     name="vpc",
     version="0.0.1",
 
-    description="An empty CDK Python app",
+    description="A Simple VPC",
     long_description=long_description,
     long_description_content_type="text/markdown",
 

@@ -600,7 +600,18 @@
           ]
         },
         "LogDestination": {
-          "Ref": "VPCFlowLogsB87C8F56"
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Fn::GetAtt": [
+                  "VPCFlowLogsB87C8F56",
+                  "Arn"
+                ]
+              },
+              "/vpcflowlogs"
+            ]
+          ]
         },
         "LogDestinationType": "s3"
       },

@@ -27,7 +27,7 @@ class VpcStack(cdk.Stack):
         )
         
         ## Create VPC
-        vpc = ec2.Vpc(self, "VPC", 
+        vpc = ec2.Vpc(self, "StartupVPC", 
             max_azs=3,
             cidr="10.0.0.0/19",
             nat_gateways=2
@@ -41,11 +41,12 @@ class VpcStack(cdk.Stack):
         ## Configure VPC Flow Logs to S3
         vpc_flow_log = ec2.CfnFlowLog(
             self, "FlowLogs",
+            name="StartupVPCFlowLogs",
             resource_id=vpc.vpc_id,
             resource_type="VPC",
             traffic_type="ALL",
             deliver_logs_permission_arn=vpc_flow_role.role_arn,
             log_destination_type="s3",
-            log_destination=bucket.bucket_name
+            log_destination=f'{bucket.bucket_arn}/vpcflowlogs'
         )
  

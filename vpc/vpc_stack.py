@@ -38,7 +38,7 @@ class VpcStack(cdk.Stack):
             },
             flow_logs={
                 "StartupVPCFlowLogs": ec2.FlowLogOptions(
-                    destination=ec2.FlowLogDestination.to_s3(bucket=bucket, key_prefix="/VPCFlowLogs/")
+                    destination=ec2.FlowLogDestination.to_s3(bucket=bucket, key_prefix="VPCFlowLogs/")
                 )
             }
         )

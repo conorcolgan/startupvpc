@@ -851,6 +851,55 @@
                   "fqn": "@aws-cdk/aws-ec2.GatewayVpcEndpoint",
                   "version": "1.129.0"
                 }
+              },
+              "StartupVPCFlowLogs": {
+                "id": "StartupVPCFlowLogs",
+                "path": "VpcStack/StartupVPC/StartupVPCFlowLogs",
+                "children": {
+                  "FlowLog": {
+                    "id": "FlowLog",
+                    "path": "VpcStack/StartupVPC/StartupVPCFlowLogs/FlowLog",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::FlowLog",
+                      "aws:cdk:cloudformation:props": {
+                        "resourceId": {
+                          "Ref": "StartupVPC1ECB1B6E"
+                        },
+                        "resourceType": "VPC",
+                        "trafficType": "ALL",
+                        "logDestination": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              {
+                                "Fn::GetAtt": [
+                                  "VPCFlowLogsB87C8F56",
+                                  "Arn"
+                                ]
+                              },
+                              "//VPCFlowLogs/"
+                            ]
+                          ]
+                        },
+                        "logDestinationType": "s3",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "VpcStack/StartupVPC"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnFlowLog",
+                      "version": "1.129.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.FlowLog",
+                  "version": "1.129.0"
+                }
               }
             },
             "constructInfo": {

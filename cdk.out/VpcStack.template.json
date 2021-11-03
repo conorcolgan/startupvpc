@@ -585,10 +585,44 @@
         "aws:cdk:path": "VpcStack/StartupVPC/S3Endpoint/Resource"
       }
     },
+    "StartupVPCStartupVPCFlowLogsFlowLog8D6E6F0D": {
+      "Type": "AWS::EC2::FlowLog",
+      "Properties": {
+        "ResourceId": {
+          "Ref": "StartupVPC1ECB1B6E"
+        },
+        "ResourceType": "VPC",
+        "TrafficType": "ALL",
+        "LogDestination": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Fn::GetAtt": [
+                  "VPCFlowLogsB87C8F56",
+                  "Arn"
+                ]
+              },
+              "//VPCFlowLogs/"
+            ]
+          ]
+        },
+        "LogDestinationType": "s3",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "VpcStack/StartupVPC"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "VpcStack/StartupVPC/StartupVPCFlowLogs/FlowLog"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/01QQW7CMBB8C3djClzaW2mEKi6VFSruzrIV2xAb2euiyPLfa8uh6WlmZ0ezo13L9eZFPi1e9d0v4dyvIliHMh5ZQy8aazy7ACxa9DY4QNF8mf88O87EZE0SJSGSHmRs7bUaMybhtzK+BeiRizaxCspeCcZZrnMSCBsZTzcom5NqhApdXhxDZ2rIzFobGD91Vw9WfdZ23lsgXfr9mQvZH1SBD83vmvGuR6Ec/WQ6Bx8Mo8v8YahNpmnH+T2XAQ2LScll9+Z8s2R4sj7GlJJQI1+sWW3lc3734tsTLV0wTAPKtuIvKQgl1YgBAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/02RQW/DIAyFf0vvlK7tZbuti7qpUlWhdOqdELqyJLgCsyhC/PeBYM1O7/Pzk23Bmq43L/Rp8cpHuxRtt/ICjKT+jFx0pAJt0TiBpJYWnBGSVFf9n2OiVahAB5ImeMUH6mvoczBqIHZL/ZsTncTkFcrCoFdimu1cByLFhvrLXaTOhVWEuSY2zq7RechMNTiUn7zJC7M/eztrQSie7nuEE+wPLMmJ4wdHOfKJMKN+Is6DDxqlifwXyJeUaofxeW6D1EiKE4/d6/YOSmOJPsr3HsYjfCW7YAiBsAlvoFdb+hx/YPFtlVoap1ENktZZfwFbZmgYmwEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "VpcStack/CDKMetadata/Default"

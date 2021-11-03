@@ -35,18 +35,11 @@ class VpcStack(cdk.Stack):
                 "S3Endpoint": ec2.GatewayVpcEndpointOptions(
                     service=ec2.GatewayVpcEndpointAwsService('s3')
                     )
+            },
+            flow_logs={
+                "StartupVPCFlowLogs": ec2.FlowLogOptions(
+                    destination=ec2.FlowLogDestination.to_s3(bucket=bucket, key_prefix="/VPCFlowLogs/")
+                )
             }
-        )
-
-        # Configure VPC Flow Logs to S3
-        vpc_flow_log = ec2.CfnFlowLog(
-            self, "FlowLogs",
-            name="StartupVPCFlowLogs",
-            resource_id=vpc.vpc_id,
-            resource_type="VPC",
-            traffic_type="ALL",
-            deliver_logs_permission_arn=vpc_flow_role.role_arn,
-            log_destination_type="s3",
-            log_destination=f'{bucket.bucket_arn}/vpcflowlogs'
         )
  

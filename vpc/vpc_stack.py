@@ -30,15 +30,15 @@ class VpcStack(cdk.Stack):
         vpc = ec2.Vpc(self, "StartupVPC", 
             max_azs=3,
             cidr="10.0.0.0/19",
-            nat_gateways=2
+            nat_gateways=2,
+            gateway_endpoints={
+                "S3Endpoint": ec2.GatewayVpcEndpointOptions(
+                    service=ec2.GatewayVpcEndpointAwsService('s3')
+                    )
+            }
         )
 
-        ## Add S3 Gateway Endpoint
-        vpc.add_gateway_endpoint("S3Endpoint", 
-            service=ec2.GatewayVpcEndpointAwsService('s3')
-        )
-
-        ## Configure VPC Flow Logs to S3
+        # Configure VPC Flow Logs to S3
         vpc_flow_log = ec2.CfnFlowLog(
             self, "FlowLogs",
             name="StartupVPCFlowLogs",

@@ -162,13 +162,13 @@
               "version": "1.129.0"
             }
           },
-          "VPC": {
-            "id": "VPC",
-            "path": "VpcStack/VPC",
+          "StartupVPC": {
+            "id": "StartupVPC",
+            "path": "VpcStack/StartupVPC",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "VpcStack/VPC/Resource",
+                "path": "VpcStack/StartupVPC/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
                   "aws:cdk:cloudformation:props": {
@@ -179,7 +179,7 @@
                     "tags": [
                       {
                         "key": "Name",
-                        "value": "VpcStack/VPC"
+                        "value": "VpcStack/StartupVPC"
                       }
                     ]
                   }
@@ -191,17 +191,17 @@
               },
               "PublicSubnet1": {
                 "id": "PublicSubnet1",
-                "path": "VpcStack/VPC/PublicSubnet1",
+                "path": "VpcStack/StartupVPC/PublicSubnet1",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "VpcStack/VPC/PublicSubnet1/Subnet",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
                         "cidrBlock": "10.0.0.0/21",
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "availabilityZone": {
                           "Fn::Select": [
@@ -223,7 +223,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet1"
+                            "value": "VpcStack/StartupVPC/PublicSubnet1"
                           }
                         ]
                       }
@@ -235,7 +235,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "VpcStack/VPC/PublicSubnet1/Acl",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/Acl",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.Resource",
                       "version": "1.129.0"
@@ -243,17 +243,17 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "VpcStack/VPC/PublicSubnet1/RouteTable",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet1"
+                            "value": "VpcStack/StartupVPC/PublicSubnet1"
                           }
                         ]
                       }
@@ -265,15 +265,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "VpcStack/VPC/PublicSubnet1/RouteTableAssociation",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPublicSubnet1RouteTableFEE4B781"
+                          "Ref": "StartupVPCPublicSubnet1RouteTableA48073F2"
                         },
                         "subnetId": {
-                          "Ref": "VPCPublicSubnet1SubnetB4246D30"
+                          "Ref": "StartupVPCPublicSubnet1SubnetB463812C"
                         }
                       }
                     },
@@ -284,16 +284,16 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "VpcStack/VPC/PublicSubnet1/DefaultRoute",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPublicSubnet1RouteTableFEE4B781"
+                          "Ref": "StartupVPCPublicSubnet1RouteTableA48073F2"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "gatewayId": {
-                          "Ref": "VPCIGWB7E252D3"
+                          "Ref": "StartupVPCIGWBF93A93D"
                         }
                       }
                     },
@@ -304,7 +304,7 @@
                   },
                   "EIP": {
                     "id": "EIP",
-                    "path": "VpcStack/VPC/PublicSubnet1/EIP",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/EIP",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
                       "aws:cdk:cloudformation:props": {
@@ -312,7 +312,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet1"
+                            "value": "VpcStack/StartupVPC/PublicSubnet1"
                           }
                         ]
                       }
@@ -324,23 +324,23 @@
                   },
                   "NATGateway": {
                     "id": "NATGateway",
-                    "path": "VpcStack/VPC/PublicSubnet1/NATGateway",
+                    "path": "VpcStack/StartupVPC/PublicSubnet1/NATGateway",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
                       "aws:cdk:cloudformation:props": {
                         "subnetId": {
-                          "Ref": "VPCPublicSubnet1SubnetB4246D30"
+                          "Ref": "StartupVPCPublicSubnet1SubnetB463812C"
                         },
                         "allocationId": {
                           "Fn::GetAtt": [
-                            "VPCPublicSubnet1EIP6AD938E8",
+                            "StartupVPCPublicSubnet1EIPD47E0418",
                             "AllocationId"
                           ]
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet1"
+                            "value": "VpcStack/StartupVPC/PublicSubnet1"
                           }
                         ]
                       }
@@ -358,17 +358,17 @@
               },
               "PublicSubnet2": {
                 "id": "PublicSubnet2",
-                "path": "VpcStack/VPC/PublicSubnet2",
+                "path": "VpcStack/StartupVPC/PublicSubnet2",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "VpcStack/VPC/PublicSubnet2/Subnet",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
                         "cidrBlock": "10.0.8.0/21",
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "availabilityZone": {
                           "Fn::Select": [
@@ -390,7 +390,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet2"
+                            "value": "VpcStack/StartupVPC/PublicSubnet2"
                           }
                         ]
                       }
@@ -402,7 +402,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "VpcStack/VPC/PublicSubnet2/Acl",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/Acl",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.Resource",
                       "version": "1.129.0"
@@ -410,17 +410,17 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "VpcStack/VPC/PublicSubnet2/RouteTable",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet2"
+                            "value": "VpcStack/StartupVPC/PublicSubnet2"
                           }
                         ]
                       }
@@ -432,15 +432,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "VpcStack/VPC/PublicSubnet2/RouteTableAssociation",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPublicSubnet2RouteTable6F1A15F1"
+                          "Ref": "StartupVPCPublicSubnet2RouteTable4BCA2E38"
                         },
                         "subnetId": {
-                          "Ref": "VPCPublicSubnet2Subnet74179F39"
+                          "Ref": "StartupVPCPublicSubnet2Subnet2C874D08"
                         }
                       }
                     },
@@ -451,16 +451,16 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "VpcStack/VPC/PublicSubnet2/DefaultRoute",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPublicSubnet2RouteTable6F1A15F1"
+                          "Ref": "StartupVPCPublicSubnet2RouteTable4BCA2E38"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "gatewayId": {
-                          "Ref": "VPCIGWB7E252D3"
+                          "Ref": "StartupVPCIGWBF93A93D"
                         }
                       }
                     },
@@ -471,7 +471,7 @@
                   },
                   "EIP": {
                     "id": "EIP",
-                    "path": "VpcStack/VPC/PublicSubnet2/EIP",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/EIP",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
                       "aws:cdk:cloudformation:props": {
@@ -479,7 +479,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet2"
+                            "value": "VpcStack/StartupVPC/PublicSubnet2"
                           }
                         ]
                       }
@@ -491,23 +491,23 @@
                   },
                   "NATGateway": {
                     "id": "NATGateway",
-                    "path": "VpcStack/VPC/PublicSubnet2/NATGateway",
+                    "path": "VpcStack/StartupVPC/PublicSubnet2/NATGateway",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
                       "aws:cdk:cloudformation:props": {
                         "subnetId": {
-                          "Ref": "VPCPublicSubnet2Subnet74179F39"
+                          "Ref": "StartupVPCPublicSubnet2Subnet2C874D08"
                         },
                         "allocationId": {
                           "Fn::GetAtt": [
-                            "VPCPublicSubnet2EIP4947BC00",
+                            "StartupVPCPublicSubnet2EIPAB5BF18E",
                             "AllocationId"
                           ]
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PublicSubnet2"
+                            "value": "VpcStack/StartupVPC/PublicSubnet2"
                           }
                         ]
                       }
@@ -525,17 +525,17 @@
               },
               "PrivateSubnet1": {
                 "id": "PrivateSubnet1",
-                "path": "VpcStack/VPC/PrivateSubnet1",
+                "path": "VpcStack/StartupVPC/PrivateSubnet1",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "VpcStack/VPC/PrivateSubnet1/Subnet",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet1/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
                         "cidrBlock": "10.0.16.0/21",
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "availabilityZone": {
                           "Fn::Select": [
@@ -557,7 +557,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PrivateSubnet1"
+                            "value": "VpcStack/StartupVPC/PrivateSubnet1"
                           }
                         ]
                       }
@@ -569,7 +569,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "VpcStack/VPC/PrivateSubnet1/Acl",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet1/Acl",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.Resource",
                       "version": "1.129.0"
@@ -577,17 +577,17 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "VpcStack/VPC/PrivateSubnet1/RouteTable",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet1/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PrivateSubnet1"
+                            "value": "VpcStack/StartupVPC/PrivateSubnet1"
                           }
                         ]
                       }
@@ -599,15 +599,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "VpcStack/VPC/PrivateSubnet1/RouteTableAssociation",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet1/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPrivateSubnet1RouteTableBE8A6027"
+                          "Ref": "StartupVPCPrivateSubnet1RouteTable8A68EB41"
                         },
                         "subnetId": {
-                          "Ref": "VPCPrivateSubnet1Subnet8BCA10E0"
+                          "Ref": "StartupVPCPrivateSubnet1SubnetB73315A6"
                         }
                       }
                     },
@@ -618,16 +618,16 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "VpcStack/VPC/PrivateSubnet1/DefaultRoute",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet1/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPrivateSubnet1RouteTableBE8A6027"
+                          "Ref": "StartupVPCPrivateSubnet1RouteTable8A68EB41"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "natGatewayId": {
-                          "Ref": "VPCPublicSubnet1NATGatewayE0556630"
+                          "Ref": "StartupVPCPublicSubnet1NATGatewayEF18F39A"
                         }
                       }
                     },
@@ -644,17 +644,17 @@
               },
               "PrivateSubnet2": {
                 "id": "PrivateSubnet2",
-                "path": "VpcStack/VPC/PrivateSubnet2",
+                "path": "VpcStack/StartupVPC/PrivateSubnet2",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "VpcStack/VPC/PrivateSubnet2/Subnet",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet2/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
                         "cidrBlock": "10.0.24.0/21",
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "availabilityZone": {
                           "Fn::Select": [
@@ -676,7 +676,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PrivateSubnet2"
+                            "value": "VpcStack/StartupVPC/PrivateSubnet2"
                           }
                         ]
                       }
@@ -688,7 +688,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "VpcStack/VPC/PrivateSubnet2/Acl",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet2/Acl",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.Resource",
                       "version": "1.129.0"
@@ -696,17 +696,17 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "VpcStack/VPC/PrivateSubnet2/RouteTable",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet2/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "VpcStack/VPC/PrivateSubnet2"
+                            "value": "VpcStack/StartupVPC/PrivateSubnet2"
                           }
                         ]
                       }
@@ -718,15 +718,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "VpcStack/VPC/PrivateSubnet2/RouteTableAssociation",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet2/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPrivateSubnet2RouteTable0A19E10E"
+                          "Ref": "StartupVPCPrivateSubnet2RouteTableC5E3B9C1"
                         },
                         "subnetId": {
-                          "Ref": "VPCPrivateSubnet2SubnetCFCDAA7A"
+                          "Ref": "StartupVPCPrivateSubnet2Subnet00F00455"
                         }
                       }
                     },
@@ -737,16 +737,16 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "VpcStack/VPC/PrivateSubnet2/DefaultRoute",
+                    "path": "VpcStack/StartupVPC/PrivateSubnet2/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "VPCPrivateSubnet2RouteTable0A19E10E"
+                          "Ref": "StartupVPCPrivateSubnet2RouteTableC5E3B9C1"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "natGatewayId": {
-                          "Ref": "VPCPublicSubnet2NATGateway3C070193"
+                          "Ref": "StartupVPCPublicSubnet2NATGateway68727C65"
                         }
                       }
                     },
@@ -763,14 +763,14 @@
               },
               "IGW": {
                 "id": "IGW",
-                "path": "VpcStack/VPC/IGW",
+                "path": "VpcStack/StartupVPC/IGW",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
                   "aws:cdk:cloudformation:props": {
                     "tags": [
                       {
                         "key": "Name",
-                        "value": "VpcStack/VPC"
+                        "value": "VpcStack/StartupVPC"
                       }
                     ]
                   }
@@ -782,15 +782,15 @@
               },
               "VPCGW": {
                 "id": "VPCGW",
-                "path": "VpcStack/VPC/VPCGW",
+                "path": "VpcStack/StartupVPC/VPCGW",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
                   "aws:cdk:cloudformation:props": {
                     "vpcId": {
-                      "Ref": "VPCB9E5F0B4"
+                      "Ref": "StartupVPC1ECB1B6E"
                     },
                     "internetGatewayId": {
-                      "Ref": "VPCIGWB7E252D3"
+                      "Ref": "StartupVPCIGWBF93A93D"
                     }
                   }
                 },
@@ -801,11 +801,11 @@
               },
               "S3Endpoint": {
                 "id": "S3Endpoint",
-                "path": "VpcStack/VPC/S3Endpoint",
+                "path": "VpcStack/StartupVPC/S3Endpoint",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "VpcStack/VPC/S3Endpoint/Resource",
+                    "path": "VpcStack/StartupVPC/S3Endpoint/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
                       "aws:cdk:cloudformation:props": {
@@ -822,20 +822,20 @@
                           ]
                         },
                         "vpcId": {
-                          "Ref": "VPCB9E5F0B4"
+                          "Ref": "StartupVPC1ECB1B6E"
                         },
                         "routeTableIds": [
                           {
-                            "Ref": "VPCPrivateSubnet1RouteTableBE8A6027"
+                            "Ref": "StartupVPCPrivateSubnet1RouteTable8A68EB41"
                           },
                           {
-                            "Ref": "VPCPrivateSubnet2RouteTable0A19E10E"
+                            "Ref": "StartupVPCPrivateSubnet2RouteTableC5E3B9C1"
                           },
                           {
-                            "Ref": "VPCPublicSubnet1RouteTableFEE4B781"
+                            "Ref": "StartupVPCPublicSubnet1RouteTableA48073F2"
                           },
                           {
-                            "Ref": "VPCPublicSubnet2RouteTable6F1A15F1"
+                            "Ref": "StartupVPCPublicSubnet2RouteTable4BCA2E38"
                           }
                         ],
                         "vpcEndpointType": "Gateway"
@@ -855,45 +855,6 @@
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-ec2.Vpc",
-              "version": "1.129.0"
-            }
-          },
-          "FlowLogs": {
-            "id": "FlowLogs",
-            "path": "VpcStack/FlowLogs",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::EC2::FlowLog",
-              "aws:cdk:cloudformation:props": {
-                "resourceId": {
-                  "Ref": "VPCB9E5F0B4"
-                },
-                "resourceType": "VPC",
-                "trafficType": "ALL",
-                "deliverLogsPermissionArn": {
-                  "Fn::GetAtt": [
-                    "FlowLog22E63E81",
-                    "Arn"
-                  ]
-                },
-                "logDestination": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "VPCFlowLogsB87C8F56",
-                          "Arn"
-                        ]
-                      },
-                      "/vpcflowlogs"
-                    ]
-                  ]
-                },
-                "logDestinationType": "s3"
-              }
-            },
-            "constructInfo": {
-              "fqn": "@aws-cdk/aws-ec2.CfnFlowLog",
               "version": "1.129.0"
             }
           },
